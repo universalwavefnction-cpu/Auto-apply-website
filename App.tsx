@@ -6,6 +6,8 @@ import MissionControlPreview from './components/MissionControlPreview';
 import Stats from './components/Stats';
 import Footer from './components/Footer';
 import Download from './components/Download';
+import Pricing from './components/Pricing';
+import FAQ from './components/FAQ';
 
 export type Language = 'de' | 'en';
 
@@ -42,9 +44,11 @@ const App: React.FC = () => {
       <main>
         <Hero lang={lang} />
         <Download lang={lang} />
-        <MissionControlPreview lang={lang} />
         <Features lang={lang} />
+        <MissionControlPreview lang={lang} />
         <Stats lang={lang} />
+        <Pricing lang={lang} />
+        <FAQ lang={lang} />
         <section className="py-24 bg-[#111] text-white overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-30"></div>
           <div className="max-w-7xl mx-auto px-6 text-center">

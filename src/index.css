@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-[#FAFAFA];
+  }
+}
+
+@layer utilities {
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .gradient-bg {
+    background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.08), transparent),
+                radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.05), transparent);
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+}
