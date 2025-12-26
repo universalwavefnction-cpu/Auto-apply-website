@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Language } from '../App';
-import DashboardMock from './DashboardMock';
 
 interface HeroProps {
   lang: Language;
 }
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   const platforms = [
     { name: 'StepStone', color: 'bg-[#FF9B00]', icon: 'S', active: true },
     { name: 'LinkedIn', color: 'bg-[#0077B5]', icon: 'L', active: true },
@@ -48,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               {t.titlePart1}<br />
               <span className="text-[#F59E0B]">{t.titlePart2}</span>
             </h1>
-            
+
             <div className="space-y-5">
               <p className="text-lg text-[#4A5568] leading-relaxed max-w-lg font-medium">
                 {t.desc}
@@ -79,12 +100,78 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           {/* Realistic High-Fidelity Laptop Mockup */}
           <div className="lg:col-span-7 relative group perspective-2000 flex justify-center lg:justify-end">
             <div className="absolute -inset-20 bg-amber-500/5 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
-            
+
             <div className="relative transition-all duration-1000 transform group-hover:rotate-y-[-3deg] group-hover:rotate-x-[1deg] w-full max-w-[720px]">
               {/* LID (Screen) */}
               <div className="relative mx-auto w-full bg-[#222] rounded-t-3xl p-2.5 border border-white/10 overflow-hidden ring-1 ring-white/5">
-                <div className="relative bg-black rounded-t-2xl overflow-hidden aspect-[16/10] border border-white/5">
-                  <DashboardMock />
+                <div className="relative bg-black rounded-t-2xl overflow-hidden aspect-[16/10] border border-white/5 group/video">
+                  {/* Demo Video Player */}
+                  <video
+                    ref={videoRef}
+                    className="w-full h-full object-cover cursor-pointer"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster="/demo-poster.png"
+                    onClick={togglePlay}
+                  >
+                    <source src="/demo.mp4" type="video/mp4" />
+                    <source src="/demo.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  {/* Video Controls Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 z-10">
+                    {/* Play/Pause Button */}
+                    <button
+                      onClick={togglePlay}
+                      className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-amber-500 hover:border-amber-500 transition-all shadow-lg"
+                      aria-label={isPlaying ? 'Pause' : 'Play'}
+                    >
+                      {isPlaying ? (
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
+                    </button>
+
+                    {/* Mute/Unmute Button */}
+                    <button
+                      onClick={toggleMute}
+                      className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-amber-500 hover:border-amber-500 transition-all shadow-lg"
+                      aria-label={isMuted ? 'Unmute' : 'Mute'}
+                    >
+                      {isMuted ? (
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Center Play Button (when paused) */}
+                  {!isPlaying && (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer z-10"
+                      onClick={togglePlay}
+                    >
+                      <div className="w-20 h-20 rounded-full bg-amber-500/90 backdrop-blur-sm flex items-center justify-center text-white shadow-2xl shadow-amber-500/30 hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.05] pointer-events-none"></div>
                   <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.85)] pointer-events-none"></div>
                 </div>
@@ -105,21 +192,21 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           <div className="flex flex-wrap items-center gap-8 md:gap-12">
             {platforms.map((p) => (
               <div key={p.name} className={`flex items-center gap-3 transition-all ${!p.active ? 'opacity-30' : 'opacity-60 hover:opacity-100'}`}>
-                 <div className={`w-8 h-8 ${p.color} rounded-lg flex items-center justify-center text-white font-black text-sm relative`}>
-                   {p.icon}
-                   {!p.active && (
-                     <span className="absolute -top-1.5 -right-2 bg-amber-500 text-[6px] px-1 py-0.5 rounded-full text-white font-black uppercase tracking-tighter ring-1 ring-white">
-                       {t.soon}
-                     </span>
-                   )}
-                 </div>
-                 <span className="text-sm font-black tracking-tight text-[#0A1128]">{p.name}</span>
+                <div className={`w-8 h-8 ${p.color} rounded-lg flex items-center justify-center text-white font-black text-sm relative`}>
+                  {p.icon}
+                  {!p.active && (
+                    <span className="absolute -top-1.5 -right-2 bg-amber-500 text-[6px] px-1 py-0.5 rounded-full text-white font-black uppercase tracking-tighter ring-1 ring-white">
+                      {t.soon}
+                    </span>
+                  )}
+                </div>
+                <span className="text-sm font-black tracking-tight text-[#0A1128]">{p.name}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
-      
+
       <style>{`
         .perspective-2000 { perspective: 2000px; }
       `}</style>

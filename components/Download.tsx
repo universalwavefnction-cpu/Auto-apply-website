@@ -14,7 +14,7 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
     if (downloading) return;
     setDownloading(platform);
     setProgress(0);
-    
+
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -56,13 +56,6 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
           icon: <path d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31c3.85-1.02 6.69-4.52 6.69-8.69 0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 3.18-2.12 5.85-5.02 6.74L12 19.71l-1.98-1.98C7.12 16.85 5 14.18 5 11c0-3.87 3.13-7 7-7z" />,
           details: 'AppImage, .deb, .rpm Packages',
           cta: 'Download .AppImage'
-        },
-        {
-          id: 'extension',
-          name: 'Browser Extension',
-          icon: <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5c0-1.1-.9-2-2-2s-2 .9-2 2V5H5c-1.1 0-1.99.9-1.99 2v3.8H4.5c1.1 0 2 .9 2 2s-.9 2-2 2H3V17c0 1.1.9 2 2 2h3.8v-1.5c0-1.1.9-2 2-2s2 .9 2 2V19H17c1.1 0 2-.9 2-2v-4h1.5c1.1 0 2-.9 2-2s-.9-2-2-2z" />,
-          details: 'Chrome Web Store / Edge Add-ons',
-          cta: 'Zum Store hinzufügen'
         }
       ],
       history: [
@@ -99,13 +92,6 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
           icon: <path d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31c3.85-1.02 6.69-4.52 6.69-8.69 0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 3.18-2.12 5.85-5.02 6.74L12 19.71l-1.98-1.98C7.12 16.85 5 14.18 5 11c0-3.87 3.13-7 7-7z" />,
           details: 'AppImage, .deb, .rpm Packages',
           cta: 'Download .AppImage'
-        },
-        {
-          id: 'extension',
-          name: 'Browser Extension',
-          icon: <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5c0-1.1-.9-2-2-2s-2 .9-2 2V5H5c-1.1 0-1.99.9-1.99 2v3.8H4.5c1.1 0 2 .9 2 2s-.9 2-2 2H3V17c0 1.1.9 2 2 2h3.8v-1.5c0-1.1.9-2 2-2s2 .9 2 2V19H17c1.1 0 2-.9 2-2v-4h1.5c1.1 0 2-.9 2-2s-.9-2-2-2z" />,
-          details: 'Chrome Web Store / Edge Add-ons',
-          cta: 'Add to Store'
         }
       ],
       history: [
@@ -121,7 +107,7 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
       {/* Visual background elements to make it feel like a "page" */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[600px] bg-white pointer-events-none -skew-y-3 opacity-50"></div>
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-20">
           {/* Sidebar / Info */}
@@ -130,7 +116,7 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
               <span className="text-amber-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 inline-block bg-amber-500/10 px-3 py-1 rounded-full">{t.badge}</span>
               <h2 className="text-5xl font-black tracking-tight text-[#0A1128] mb-8 leading-[1.1]">{t.title}</h2>
               <p className="text-[#4A5568] text-xl leading-relaxed font-medium mb-8">{t.desc}</p>
-              
+
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
@@ -169,15 +155,15 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
           {/* Download Grid */}
           <div className="lg:col-span-8 grid sm:grid-cols-2 gap-8">
             {t.platforms.map((p) => (
-              <div 
-                key={p.id} 
+              <div
+                key={p.id}
                 className={`bg-white p-10 rounded-[32px] flex flex-col items-start border-2 transition-all relative group overflow-hidden ${downloading === p.id ? 'border-amber-500 ring-4 ring-amber-500/5' : 'border-slate-50 hover:border-amber-200 hover:shadow-2xl hover:shadow-amber-500/10'}`}
               >
                 {/* Visual feedback for clicking */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-slate-100 overflow-hidden">
                   {downloading === p.id && (
-                    <div 
-                      className="h-full bg-amber-500 transition-all duration-300 ease-out shadow-[0_0_8px_rgba(245,158,11,0.5)]" 
+                    <div
+                      className="h-full bg-amber-500 transition-all duration-300 ease-out shadow-[0_0_8px_rgba(245,158,11,0.5)]"
                       style={{ width: `${progress}%` }}
                     />
                   )}
@@ -191,15 +177,14 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
 
                 <h3 className="text-2xl font-black text-[#0A1128] mb-3">{p.name}</h3>
                 <p className="text-sm text-slate-400 font-bold mb-10 leading-relaxed uppercase tracking-tight">{p.details}</p>
-                
-                <button 
+
+                <button
                   onClick={() => startDownload(p.id)}
                   disabled={!!downloading}
-                  className={`mt-auto w-full py-4 px-6 rounded-2xl font-black text-sm tracking-tight transition-all flex items-center justify-center gap-3 ${
-                    downloading === p.id 
-                    ? 'bg-amber-500 text-white shadow-xl shadow-amber-500/40 translate-y-[-2px]' 
-                    : 'bg-[#0A1128] text-white hover:bg-slate-800 shadow-xl shadow-slate-900/10 hover:shadow-2xl'
-                  }`}
+                  className={`mt-auto w-full py-4 px-6 rounded-2xl font-black text-sm tracking-tight transition-all flex items-center justify-center gap-3 ${downloading === p.id
+                      ? 'bg-amber-500 text-white shadow-xl shadow-amber-500/40 translate-y-[-2px]'
+                      : 'bg-[#0A1128] text-white hover:bg-slate-800 shadow-xl shadow-slate-900/10 hover:shadow-2xl'
+                    }`}
                 >
                   {downloading === p.id ? (
                     <>

@@ -14,7 +14,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, lang, setLang }) => {
       download: 'Download',
       pricing: 'Preise',
       about: 'Über uns',
-      login: 'Login',
       start: 'Get Started'
     },
     en: {
@@ -22,7 +21,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, lang, setLang }) => {
       download: 'Download',
       pricing: 'Pricing',
       about: 'About Us',
-      login: 'Login',
       start: 'Get Started'
     }
   }[lang];
@@ -41,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, lang, setLang }) => {
             <span className="block text-[10px] text-amber-600 font-bold uppercase leading-none tracking-widest">Intelligence</span>
           </div>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           <a href="#features" className="hover:text-amber-600 transition-colors">{t.features}</a>
           <a href="#download" className="hover:text-amber-600 transition-colors">{t.download}</a>
@@ -51,20 +49,19 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, lang, setLang }) => {
 
         <div className="flex items-center gap-4">
           <div className="flex bg-slate-100 p-1 rounded-lg">
-            <button 
+            <button
               onClick={() => setLang('de')}
               className={`px-2 py-1 text-[10px] font-bold rounded ${lang === 'de' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-400'}`}
             >
               DE
             </button>
-            <button 
+            <button
               onClick={() => setLang('en')}
               className={`px-2 py-1 text-[10px] font-bold rounded ${lang === 'en' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-400'}`}
             >
               EN
             </button>
           </div>
-          <button className="text-sm font-semibold hover:text-amber-600 transition-colors px-2 py-2">{t.login}</button>
           <a href="#download" className="bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-slate-900/10 hover:bg-slate-800 transition-all">
             {t.start}
           </a>
