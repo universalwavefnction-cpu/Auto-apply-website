@@ -11,13 +11,13 @@ const Stats: React.FC<StatsProps> = ({ lang }) => {
     de: {
       time: 'Zeit gespart',
       interviews: 'Mehr Interviews',
-      apps: 'Bewerbungen',
+      apps: 'Bewerbungen / Tag',
       agent: 'Aktiver Agent'
     },
     en: {
       time: 'Time saved',
       interviews: 'More interviews',
-      apps: 'Applications',
+      apps: 'Applications / Day',
       agent: 'Active Agent'
     }
   }[lang];
@@ -35,7 +35,7 @@ const Stats: React.FC<StatsProps> = ({ lang }) => {
             <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{t.interviews}</p>
           </div>
           <div className="space-y-2">
-            <p className="text-5xl font-bold text-slate-900 tracking-tighter">150k+</p>
+            <p className="text-5xl font-bold text-slate-900 tracking-tighter">95-100</p>
             <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{t.apps}</p>
           </div>
           <div className="space-y-2">

@@ -8,104 +8,40 @@ interface PricingProps {
 const Pricing: React.FC<PricingProps> = ({ lang }) => {
   const t = {
     de: {
-      badge: 'Investieren Sie in Ihre Zukunft',
-      title: 'Transparente, faire Preise',
-      desc: 'Wählen Sie das Paket, das am besten zu Ihren Karrierezielen passt. Jederzeit kündbar.',
-      monthly: '/ Monat',
-      popular: 'Beliebt',
-      plans: [
-        {
-          name: 'Starter',
-          price: '0€',
-          desc: 'Perfekt zum Ausprobieren',
-          features: [
-            '3 Bewerbungen / Tag',
-            'Basis-KI Anschreiben',
-            'LinkedIn Integration',
-            'Community Support'
-          ],
-          cta: 'Kostenlos starten',
-          variant: 'basic'
-        },
-        {
-          name: 'Pro',
-          price: '29€',
-          desc: 'Der Turbolader für Ihre Jobsuche',
-          features: [
-            'Unbegrenzte Bewerbungen',
-            'Premium-KI (GPT-4) Anschreiben',
-            'Alle Plattformen (StepStone, Xing, etc.)',
-            'Priority Email Support',
-            'Detaillierte Analytics'
-          ],
-          cta: 'Pro testen',
-          variant: 'popular'
-        },
-        {
-          name: 'Ultimate',
-          price: '99€',
-          desc: 'Alles inklusive + Hands-on Service',
-          features: [
-            'Alles in Pro',
-            'Persönlicher Success Manager',
-            'CV-Review durch Experten',
-            'Interview-Coaching Session',
-            'Headhunter-Datenbank Zugang'
-          ],
-          cta: 'Jetzt upgraden',
-          variant: 'basic'
-        }
-      ]
+      badge: 'Pre-Launch Angebot',
+      title: 'Starten Sie jetzt zum Sonderpreis',
+      desc: 'Sichern Sie sich unseren exklusiven Pilot-Tarif. Begrenzte Verfügbarkeit.',
+      weekly: '/ Woche',
+      planName: 'Pilot',
+      planDesc: 'Voller Zugang während der Pre-Launch Phase',
+      features: [
+        'Unbegrenzte Bewerbungen',
+        'KI Integration',
+        'Alle Plattformen (StepStone, LinkedIn, Xing)',
+        'Headless-Modus (bewirbt sich ohne geöffnetes Fenster)',
+        'Detaillierte Analytics',
+        'Frühzugang zu neuen Features'
+      ],
+      cta: 'Jetzt starten',
+      note: 'Keine versteckten Kosten. Jederzeit kündbar.'
     },
     en: {
-      badge: 'Invest in your future',
-      title: 'Transparent, fair pricing',
-      desc: 'Choose the plan that fits your career goals best. Cancel anytime.',
-      monthly: '/ month',
-      popular: 'Popular',
-      plans: [
-        {
-          name: 'Starter',
-          price: '0€',
-          desc: 'Perfect to get started',
-          features: [
-            '3 Applications / Day',
-            'Basic AI Cover Letters',
-            'LinkedIn Integration',
-            'Community Support'
-          ],
-          cta: 'Start for Free',
-          variant: 'basic'
-        },
-        {
-          name: 'Pro',
-          price: '29€',
-          desc: 'Turbocharge your job search',
-          features: [
-            'Unlimited Applications',
-            'Premium AI (GPT-4) Cover Letters',
-            'All Platforms (StepStone, Xing, etc.)',
-            'Priority Email Support',
-            'Detailed Analytics'
-          ],
-          cta: 'Try Pro',
-          variant: 'popular'
-        },
-        {
-          name: 'Ultimate',
-          price: '99€',
-          desc: 'All inclusive + Hands-on Service',
-          features: [
-            'Everything in Pro',
-            'Personal Success Manager',
-            'Expert CV Review',
-            'Interview Coaching Session',
-            'Headhunter Database Access'
-          ],
-          cta: 'Upgrade Now',
-          variant: 'basic'
-        }
-      ]
+      badge: 'Pre-Launch Offer',
+      title: 'Get started at a special price',
+      desc: 'Secure our exclusive Pilot plan. Limited availability.',
+      weekly: '/ week',
+      planName: 'Pilot',
+      planDesc: 'Full access during the pre-launch phase',
+      features: [
+        'Unlimited Applications',
+        'AI Integration',
+        'All Platforms (StepStone, LinkedIn, Xing)',
+        'Headless Mode (applies without window open)',
+        'Detailed Analytics',
+        'Early access to new features'
+      ],
+      cta: 'Get Started',
+      note: 'No hidden fees. Cancel anytime.'
     }
   }[lang];
 
@@ -117,58 +53,50 @@ const Pricing: React.FC<PricingProps> = ({ lang }) => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">{t.badge}</h2>
-          <h3 className="text-4xl font-bold tracking-tight text-slate-900 mb-6">{t.title}</h3>
+          <span className="inline-block bg-amber-500/10 text-amber-600 font-black uppercase tracking-widest text-[10px] px-4 py-2 rounded-full mb-6">{t.badge}</span>
+          <h3 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">{t.title}</h3>
           <p className="text-slate-600 text-lg leading-relaxed">
             {t.desc}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {t.plans.map((plan, i) => (
-            <div 
-              key={i} 
-              className={`relative bg-white rounded-3xl p-8 border hover:border-amber-200 transition-all group ${
-                plan.variant === 'popular' 
-                  ? 'border-amber-500 shadow-2xl shadow-amber-500/10 scale-105 z-10' 
-                  : 'border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-slate-200/50'
-              }`}
-            >
-              {plan.variant === 'popular' && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white text-[10px] uppercase font-black tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-amber-500/30">
-                  {t.popular}
-                </div>
-              )}
-
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-slate-900 mb-2">{plan.name}</h4>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-black text-slate-900">{plan.price}</span>
-                  <span className="text-slate-500 font-medium">{t.monthly}</span>
-                </div>
-                <p className="text-slate-500 text-sm">{plan.desc}</p>
-              </div>
-
-              <div className="space-y-4 mb-8">
-                {plan.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <svg className={`w-5 h-5 shrink-0 ${plan.variant === 'popular' ? 'text-amber-500' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-slate-600">{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${
-                plan.variant === 'popular'
-                  ? 'bg-amber-500 text-white hover:bg-amber-600 shadow-lg shadow-amber-500/30'
-                  : 'bg-slate-50 text-slate-900 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
-              }`}>
-                {plan.cta}
-              </button>
+        {/* Single Centered Pricing Card */}
+        <div className="flex justify-center">
+          <div className="relative bg-white rounded-[32px] p-10 md:p-12 border-2 border-amber-500 shadow-2xl shadow-amber-500/10 max-w-md w-full">
+            {/* Pre-launch badge */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white text-[10px] uppercase font-black tracking-widest px-5 py-2 rounded-full shadow-lg shadow-amber-500/30">
+              Pre-Launch
             </div>
-          ))}
+
+            <div className="text-center mb-10">
+              <h4 className="text-2xl font-black text-slate-900 mb-4">{t.planName}</h4>
+              <div className="flex items-baseline justify-center gap-2 mb-4">
+                <span className="text-6xl font-black text-amber-500">6€</span>
+                <span className="text-slate-500 font-bold text-lg">{t.weekly}</span>
+              </div>
+              <p className="text-slate-500 text-sm">{t.planDesc}</p>
+            </div>
+
+            <div className="space-y-4 mb-10">
+              {t.features.map((feature, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 shrink-0 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-slate-700 font-medium">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => window.location.href = 'https://buy.stripe.com/14A8wI3Kb9aH15l6uW5sA00'}
+              className="w-full py-4 rounded-2xl font-black text-base bg-amber-500 text-white hover:bg-amber-600 shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] active:scale-100"
+            >
+              {t.cta}
+            </button>
+
+            <p className="text-center text-xs text-slate-400 mt-6 font-medium">{t.note}</p>
+          </div>
         </div>
       </div>
     </section>

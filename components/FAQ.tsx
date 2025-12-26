@@ -21,10 +21,6 @@ const FAQ: React.FC<FAQProps> = ({ lang }) => {
                     a: 'Absolut. Der "Review-Mode" erlaubt es Ihnen, jedes Anschreiben vor dem Absenden zu überprüfen und anzupassen. Sie haben immer die volle Kontrolle.'
                 },
                 {
-                    q: 'Funktioniert das auch für englische Jobs?',
-                    a: 'Ja, unsere KI erkennt automatisch die Sprache der Stellenausschreibung und verfasst das Anschreiben entsprechend in Deutsch oder Englisch.'
-                },
-                {
                     q: 'Gibt es eine Geld-zurück-Garantie?',
                     a: 'Ja, Sie können AutoApply Intelligence 14 Tage lang risikofrei testen. Wenn Sie nicht zufrieden sind, erhalten Sie Ihr Geld zurück. Ohne Fragen.'
                 },
@@ -44,10 +40,6 @@ const FAQ: React.FC<FAQProps> = ({ lang }) => {
                 {
                     q: 'Can I edit the AI cover letters?',
                     a: 'Absolutely. "Review Mode" allows you to check and adjust every cover letter before sending. You always have full control.'
-                },
-                {
-                    q: 'Does it work for English jobs too?',
-                    a: 'Yes, our AI automatically detects the language of the job listing and writes the cover letter in German or English accordingly.'
                 },
                 {
                     q: 'Is there a money-back guarantee?',

@@ -18,24 +18,24 @@ const Features: React.FC<FeaturesProps> = ({ lang }) => {
           desc: 'Höchster Datenschutz: Ihre Zugangsdaten und CV-Details werden ausschließlich verschlüsselt auf Ihrem lokalen Gerät gespeichert.'
         },
         {
-          title: 'KI-Anschreiben-Generator',
-          desc: 'Erstellt für jede einzelne Stelle ein perfekt abgestimmtes Anschreiben in fehlerfreiem Deutsch.'
+          title: 'KI-Formularausfüllung',
+          desc: 'Beantwortet Bewerbungsfragen automatisch mit KI – basierend auf Ihrem hinterlegten Profil.'
         },
         {
           title: 'Automatisierte Bewerbungen',
           desc: 'Klickt automatisch auf "Bewerben" und füllt alle notwendigen Formularfelder präzise aus.'
         },
         {
-          title: 'Smart Filtering',
-          desc: 'Sortiert Stellen aus, die nicht zu Ihrem Gehaltswunsch oder Ihren Fähigkeiten passen.'
+          title: 'Firmen-Blacklist',
+          desc: 'Überspringen Sie bestimmte Unternehmen automatisch – inklusive Ihres aktuellen Arbeitgebers.'
         },
         {
           title: 'Xing & LinkedIn integration',
           desc: 'Native Unterstützung der größten deutschsprachigen Karrierenetzwerke.'
         },
         {
-          title: 'Diskretions-Modus',
-          desc: 'Verhindert Bewerbungen bei Ihrem aktuellen Arbeitgeber oder dessen Tochterfirmen.'
+          title: 'Headless-Modus',
+          desc: 'Bewirbt sich im Hintergrund, ohne ein Browserfenster zu öffnen – arbeiten Sie ungestört weiter.'
         }
       ]
     },
@@ -49,24 +49,24 @@ const Features: React.FC<FeaturesProps> = ({ lang }) => {
           desc: 'Maximum privacy: Your credentials and CV details are stored exclusively encrypted on your local device.'
         },
         {
-          title: 'AI Cover Letter Generator',
-          desc: 'Creates a perfectly tailored cover letter for every single job in flawless German or English.'
+          title: 'AI Form Filling',
+          desc: 'Automatically answers application questions with AI – based on your stored profile.'
         },
         {
           title: 'Automated Applications',
           desc: 'Automatically clicks "Apply" and fills in all required form fields with precision.'
         },
         {
-          title: 'Smart Filtering',
-          desc: 'Filters out jobs that don\'t match your salary expectations or skill set.'
+          title: 'Company Blacklist',
+          desc: 'Automatically skip specific companies – including your current employer.'
         },
         {
           title: 'Xing & LinkedIn Integration',
           desc: 'Native support for the largest German-speaking career networks.'
         },
         {
-          title: 'Discretion Mode',
-          desc: 'Prevents applications to your current employer or their subsidiaries.'
+          title: 'Headless Mode',
+          desc: 'Applies in the background without opening a browser window – continue working undisturbed.'
         }
       ]
     }
@@ -91,7 +91,7 @@ const Features: React.FC<FeaturesProps> = ({ lang }) => {
             {t.desc}
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.features.map((f, i) => (
             <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-500/5 transition-all group">

@@ -83,17 +83,17 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               <a href="#download" className="bg-[#F59E0B] text-white px-8 py-4 rounded-xl font-black text-lg shadow-xl shadow-amber-500/30 hover:bg-amber-600 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center">
                 {t.cta}
               </a>
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-2">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-10 h-10 rounded-full border-2 border-white shadow-sm bg-slate-200" alt="User" />
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Anna" className="w-10 h-10 rounded-full border-2 border-white shadow-sm bg-slate-200" alt="User" />
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mark" className="w-10 h-10 rounded-full border-2 border-white shadow-sm bg-slate-200" alt="User" />
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-[#F1F5F9] flex items-center justify-center text-[10px] font-black text-[#64748B] shadow-sm">
-                    +1.2k
-                  </div>
-                </div>
-                <span className="text-xs font-bold text-[#94A3B8]">{t.social}</span>
-              </div>
+              <a
+                href="https://testimonial.to/autoapply-intelligence"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-amber-600 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+                {lang === 'de' ? 'Bewertung abgeben' : 'Leave a review'}
+              </a>
             </div>
           </div>
 
