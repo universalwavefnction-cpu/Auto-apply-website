@@ -7,8 +7,10 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -25,6 +27,26 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      setProgress(videoRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(e.target.value);
+    if (videoRef.current) {
+      videoRef.current.currentTime = newTime;
+      setProgress(newTime);
     }
   };
 
@@ -101,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           <div className="lg:col-span-7 relative group perspective-2000 flex justify-center lg:justify-end">
             <div className="absolute -inset-20 bg-amber-500/5 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
 
-            <div className="relative transition-all duration-1000 transform group-hover:rotate-y-[-3deg] group-hover:rotate-x-[1deg] w-full max-w-[720px]">
+            <div className="relative transition-all duration-1000 transform group-hover:rotate-y-[-3deg] group-hover:rotate-x-[1deg] w-full max-w-[560px]">
               {/* LID (Screen) */}
               <div className="relative mx-auto w-full bg-[#222] rounded-t-3xl p-2.5 border border-white/10 overflow-hidden ring-1 ring-white/5">
                 <div className="relative bg-black rounded-t-2xl overflow-hidden aspect-[16/10] border border-white/5 group/video">
@@ -109,12 +131,13 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
                   <video
                     ref={videoRef}
                     className="w-full h-full object-cover cursor-pointer"
-                    autoPlay
                     loop
                     muted
                     playsInline
                     poster="/demo-poster.png"
                     onClick={togglePlay}
+                    onTimeUpdate={handleTimeUpdate}
+                    onLoadedMetadata={handleLoadedMetadata}
                   >
                     <source src="/demo.mp4" type="video/mp4" />
                     <source src="/demo.webm" type="video/webm" />
@@ -156,6 +179,19 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
                         </svg>
                       )}
                     </button>
+                  </div>
+
+                  {/* Seek Bar */}
+                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 z-10 flex items-end px-4 pb-2">
+                    <input
+                      type="range"
+                      min={0}
+                      max={duration || 100}
+                      step={0.1}
+                      value={progress}
+                      onChange={handleSeek}
+                      className="w-full h-1 bg-white/30 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-amber-500 [&::-webkit-slider-thumb]:shadow-lg"
+                    />
                   </div>
 
                   {/* Center Play Button (when paused) */}
