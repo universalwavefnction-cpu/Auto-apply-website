@@ -123,14 +123,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           <div className="lg:col-span-7 relative group perspective-2000 flex justify-center lg:justify-end">
             <div className="absolute -inset-20 bg-amber-500/5 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
 
-            <div className="relative transition-all duration-1000 transform group-hover:rotate-y-[-3deg] group-hover:rotate-x-[1deg] w-full max-w-[560px]">
+            <div className="relative transition-all duration-1000 transform group-hover:rotate-y-[-3deg] group-hover:rotate-x-[1deg] w-full max-w-[1333px]">
               {/* LID (Screen) */}
               <div className="relative mx-auto w-full bg-[#222] rounded-t-3xl p-2.5 border border-white/10 overflow-hidden ring-1 ring-white/5">
                 <div className="relative bg-black rounded-t-2xl overflow-hidden aspect-[16/10] border border-white/5 group/video">
                   {/* Demo Video Player */}
                   <video
                     ref={videoRef}
-                    className="w-full h-full object-cover cursor-pointer"
+                    className="w-[85%] h-[85%] object-cover cursor-pointer mx-auto my-auto"
                     loop
                     muted
                     playsInline
