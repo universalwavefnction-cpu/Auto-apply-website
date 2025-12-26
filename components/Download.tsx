@@ -16,21 +16,17 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
       return;
     }
 
-    // Real file downloads
-    const files = {
-      macos: 'AutoApply-1.2.4.dmg',
-      windows: 'AutoApply-1.2.4.exe',
-      linux: 'AutoApply-1.2.4.AppImage'
+    // GitHub Releases download URLs
+    const baseUrl = 'https://github.com/universalwavefnction-cpu/Auto-apply-website/releases/download/v1.2.4';
+    const files: Record<string, string> = {
+      macos: `${baseUrl}/AutoApply-1.2.4.dmg`,
+      windows: `${baseUrl}/AutoApply-1.2.4.exe`,
+      linux: `${baseUrl}/AutoApply-1.2.4.AppImage`
     };
 
-    const fileName = files[platform as keyof typeof files];
-    if (fileName) {
-      const link = document.createElement('a');
-      link.href = `/${fileName}`;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    const url = files[platform];
+    if (url) {
+      window.open(url, '_blank');
     }
   };
 
