@@ -41,8 +41,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   return (
     <footer className="bg-white pt-20 pb-10 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-2 space-y-6">
+        <div className="grid md:grid-cols-1 gap-12 mb-16">
+          <div className="space-y-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-amber-500 rounded flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,24 +54,6 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             <p className="text-slate-500 max-w-sm leading-relaxed">
               {t.desc}
             </p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-400">{t.product}</h4>
-            <ul className="space-y-4 text-sm font-medium text-slate-600">
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.how}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.plat}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.price}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.api}</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-400">{t.legal}</h4>
-            <ul className="space-y-4 text-sm font-medium text-slate-600">
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.imp}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.privacy}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.tos}</a></li>
-              <li><a href="#" className="hover:text-amber-600 transition-colors">{t.cookies}</a></li>
-            </ul>
           </div>
         </div>
         <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold text-slate-400 uppercase tracking-widest">
