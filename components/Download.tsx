@@ -19,9 +19,9 @@ const Download: React.FC<DownloadProps> = ({ lang }) => {
     // GitHub Releases download URLs
     const baseUrl = 'https://github.com/universalwavefnction-cpu/Auto-apply-website/releases/download/v1.2.4';
     const files: Record<string, string> = {
-      macos: `${baseUrl}/AutoApply-1.2.4.dmg`,
-      windows: `${baseUrl}/AutoApply-1.2.4.exe`,
-      linux: `${baseUrl}/AutoApply-1.2.4.AppImage`
+      macos: `${baseUrl}/AutoApply-1.2.4-arm64.dmg`,
+      windows: `${baseUrl}/AutoApply.Setup.1.2.4.exe`,
+      linux: `${baseUrl}/AutoApply-1.2.4-arm64.AppImage`
     };
 
     const url = files[platform];
